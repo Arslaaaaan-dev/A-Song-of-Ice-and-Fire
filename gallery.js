@@ -126,9 +126,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function setupEventListeners() {
     // Search
+    let searchTimeout;
     searchInput.addEventListener('input', (e) => {
-      searchQuery = e.target.value.toLowerCase();
-      applyFilters();
+      clearTimeout(searchTimeout);
+      searchTimeout = setTimeout(() => {
+        searchQuery = e.target.value.toLowerCase();
+        applyFilters();
+      }, 300);
     });
 
     // A-Z Navigation
