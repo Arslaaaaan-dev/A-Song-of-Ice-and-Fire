@@ -334,6 +334,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const { x, y } = calculateItemPosition(i, itemWidth);
     const el = buildGalleryItemDOM(imgData);
+    el.dataset.index = i;
     applyItemStyles(el, x, y, itemWidth);
 
     galleryContainer.appendChild(el);
