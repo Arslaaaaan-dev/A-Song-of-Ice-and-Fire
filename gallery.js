@@ -235,8 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
     window.scrollTo(0, 0);
     renderedItems.forEach(item => {
       item.el.remove();
-      const img = item.el.querySelector('img');
-      if (img) imageObserver.unobserve(img);
+      if (item.img) imageObserver.unobserve(item.img);
     });
     renderedItems.clear();
 
@@ -337,17 +336,15 @@ document.addEventListener('DOMContentLoaded', () => {
     applyItemStyles(el, x, y, itemWidth);
 
     galleryContainer.appendChild(el);
-    renderedItems.set(i, { el, index: i });
-
     const img = el.querySelector('img');
+    renderedItems.set(i, { el, img, index: i });
     imageObserver.observe(img);
   }
 
   function cleanupOutOfBounds(newRenderedIndices) {
     for (const [index, item] of renderedItems.entries()) {
       if (!newRenderedIndices.has(index)) {
-        const img = item.el.querySelector('img');
-        if (img) imageObserver.unobserve(img);
+        if (item.img) imageObserver.unobserve(item.img);
         item.el.remove();
         renderedItems.delete(index);
       }
