@@ -82,7 +82,8 @@ const testCases = [
     {path: "A/A (Test).jpg"},
     {path: "/B/Test.png"},
     {path: "./C/Test.png"},
-    {filename: "hello.png", folder: "D"}
+    {filename: "hello.png", folder: "D"},
+    {path: ""}
   ],
   // Case B: object mapping folders -> array
   {
