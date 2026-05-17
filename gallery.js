@@ -224,9 +224,10 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   function applyFilters() {
+    const q = (searchQuery || '').toLowerCase();
     filteredImages = allImages.filter(img => {
       const matchesLetter = currentLetter === 'ALL' || (img.folder === currentLetter);
-      const q = (searchQuery || '').toLowerCase();
+
       const matchesSearch = !q || (img.name && img.name.toLowerCase().includes(q)) || (img.filename && img.filename.toLowerCase().includes(q));
       return matchesLetter && matchesSearch;
     });
